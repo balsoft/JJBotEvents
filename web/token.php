@@ -9,7 +9,15 @@
 
   $messageText = $update["message"]["text"];
 
-  $reply = 'Добрый день! Я подумаю о том, что вы написали: ' . $messageText ;
+  if ($messageText == '\now') {
+      $reply = 'Идёт занятие по ботам';
+  }
+
+  if ($messageText == '\next') {
+      $reply = 'Спорт';
+  }
+
+  $reply = $reply . ' Хорошего дня, ' . $update['message']['from']['first_name'];
 
   $sendto = API_URL . "sendmessage?chat_id=" . $chatID . "&text=" . $reply;
   file_get_contents($sendto);
