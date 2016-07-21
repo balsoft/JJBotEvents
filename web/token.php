@@ -9,7 +9,7 @@
 
   $messageText = $update["message"]["text"];
 
-  $reply = 'Добрый день! Я подумаю о том, что вы напислаи: ' . $messageText ;
+  $reply = 'Добрый день! Я подумаю о том, что вы написали: ' . $messageText ;
 
   $sendto = API_URL . "sendmessage?chat_id=" . $chatID . "&text=" . $reply;
   file_get_contents($sendto);
