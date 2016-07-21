@@ -9,11 +9,11 @@
 
   $messageText = $update["message"]["text"];
 
-  if ($messageText == '\now') {
+  if ($messageText == '/now') {
       $reply = 'Идёт занятие по ботам';
   }
 
-  if ($messageText == '\next') {
+  if ($messageText == '/next') {
       $reply = 'Спорт';
   }
 
