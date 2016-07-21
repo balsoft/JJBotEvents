@@ -10,12 +10,14 @@
   $messageText = $update["message"]["text"];
 
   if ($messageText == '/now') {
-      $reply = 'Идёт занятие по ботам';
+      $reply = 'Идёт занятие по ботам.';
   }
 
   if ($messageText == '/next') {
-      $reply = 'Спорт';
+      $reply = 'Спорт.';
   }
+
+  $reply = $reply . $messageText;
 
   $reply = $reply . ' Хорошего дня, ' . $update['message']['from']['first_name'];
 
