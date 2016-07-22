@@ -5,14 +5,10 @@ define('BOT_TOKEN', '264455520:AAE0uvEd-Ic5Qo25vgpdGY9NydnTYqAvSnI');
   define('DB_NAME','db_a0a1cf_jj');
   define('LOGIN','a0a1cf_jj');
   define('PASS','1q2w3e4r');
-$link = mysqli_connect(SQL_URL, LOGIN, PASS, DB_NAME);
+$mysqli = new mysqli(SQL_URL, LOGIN, PASS, DB_NAME);
 
-if (!$link) {
-    die('Ошибка подключения (' . mysqli_connect_errno() . ') '
-            . mysqli_connect_error());
-}
 
-echo 'Соединение установлено... ' . mysqli_get_host_info($link) . "\n";
+echo 'Соединение установлено... ' . "\n";
 echo 'Создаем таблицу';
 $mysqli->query("CREATE TABLE Users (name TEXT, chatID TEXT");
 echo 'Таблица создана';
