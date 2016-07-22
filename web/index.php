@@ -9,17 +9,17 @@ $mysqli = new mysqli(SQL_URL, LOGIN, PASS, DB_NAME);
 
 
 echo 'Соединение установлено... ' . "\n";
-echo 'Создаем таблицу';
+
+echo 'Создаем таблицу'."\n";
 $mysqli->query("CREATE TABLE Users (name TEXT, chatID TEXT)");
-echo 'Таблица создана';
+echo 'Таблица создана'."\n";
 /* Откл. автофиксацию изменений */
-echo 'Откл. автофиксацию изменений';
 /* Вставить некоторые значения */
-echo $mysqli->query('INSERT INTO Users VALUES ("Margarita","1337")');
+echo $mysqli->query('INSERT INTO Users VALUES ("Margarita","1337")')."\n";
 echo 'Встаили значения';
 /* Фиксировать транзакцию */
-printf('%d',$mysql->query("SELECT * FROM users WHERE 1 LIMIT 0,25")->num_rows);
-
+$result=$mysql->query("SELECT * FROM Users WHERE 1 LIMIT 0,25")."\n";
+echo $rersult->num_rows."\n";
 /* Удалить таблицу */
 
 $mysqli->close();
