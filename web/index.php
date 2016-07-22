@@ -16,10 +16,10 @@ echo 'Таблица создана'."\n";
 /* Откл. автофиксацию изменений */
 /* Вставить некоторые значения */
 echo $mysqli->query('INSERT INTO Users VALUES ("Margarita","1337")')."\n";
-echo 'Вставили значения';
+echo 'Вставили значения'."\n";
 /* Фиксировать транзакцию */
 $result = $mysqli->query("SELECT * FROM Users WHERE 1 LIMIT 0,25");
-echo $result->num_rows."\n";
+echo $result."\n";
 echo 'Тест';
 /* Удалить таблицу */
 
