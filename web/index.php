@@ -14,7 +14,7 @@ if (!$link) {
 
 echo 'Соединение установлено... ' . mysqli_get_host_info($link) . "\n";
 echo 'Создаем таблицу';
-$mysqli->query("CREATE TABLE Users (name TEXT, chatID TEXT)");
+$mysqli->query("CREATE TABLE Users (name VARCHAR(20), chatID VARCHAR(20))");
 echo 'Таблица создана';
 /* Откл. автофиксацию изменений */
 $mysqli->autocommit(FALSE);
@@ -29,7 +29,7 @@ if (!$mysqli->commit()) {
 }
  echo $mysqli->query("SELECT * FROM Users");
 /* Удалить таблицу */
-$mysqli->query("DROP TABLE Language");
+$mysqli->query("DROP TABLE Users");
 
 mysqli_close($link);
 ?>
