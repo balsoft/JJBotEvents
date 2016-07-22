@@ -19,7 +19,7 @@ echo $mysqli->query('INSERT INTO Users VALUES ("Margarita","1337")')."\n";
 echo 'Встаили значения';
 /* Фиксировать транзакцию */
 $result=$mysql->query("SELECT * FROM Users WHERE 1 LIMIT 0,25")."\n";
-echo $rersult->num_rows."\n";
+echo $result->num_rows."\n";
 echo 'Тест';
 /* Удалить таблицу */
 
