@@ -14,19 +14,15 @@ if (!$link) {
 
 echo 'Соединение установлено... ' . mysqli_get_host_info($link) . "\n";
 echo 'Создаем таблицу';
-$mysqli->query("CREATE TABLE Users (name VARCHAR(20), chatID VARCHAR(20))");
+$mysqli->query("CREATE TABLE Users (name TEXT, chatID TEXT");
 echo 'Таблица создана';
 /* Откл. автофиксацию изменений */
-$mysqli->autocommit(FALSE);
 echo 'Откл. автофиксацию изменений';
 /* Вставить некоторые значения */
 $mysqli->query("INSERT INTO Users VALUES ('Margarita','1337')");
 echo 'Встаили значения';
 /* Фиксировать транзакцию */
-if (!$mysqli->commit()) {
-    print("Не удалось зафиксировать транзакцию\n");
-    exit();
-}
+
  echo $mysqli->query("SELECT * FROM Users");
 /* Удалить таблицу */
 $mysqli->query("DROP TABLE Users");
