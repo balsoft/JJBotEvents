@@ -21,7 +21,6 @@ echo 'Встаили значения';
 
 
 /* Удалить таблицу */
-$mysqli->query("DROP TABLE Users");
 
 $mysqli->close();
 ?>
