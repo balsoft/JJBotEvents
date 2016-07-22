@@ -15,18 +15,10 @@ echo 'Таблица создана';
 /* Откл. автофиксацию изменений */
 echo 'Откл. автофиксацию изменений';
 /* Вставить некоторые значения */
-$mysqli->query("INSERT INTO Users VALUES ('Margarita','1337')");
+$mysqli->query("INSERT INTO Users VALUES ('Margarita')");
 echo 'Встаили значения';
 /* Фиксировать транзакцию */
 
- if ($result = $mysqli->query("SELECT name FROM Users")) {
-    echo 'select succeded';
-
-    /* очищаем результирующий набор */
-    $result->close();
-}else{
-  echo 'Error'
-}
 
 /* Удалить таблицу */
 $mysqli->query("DROP TABLE Users");
