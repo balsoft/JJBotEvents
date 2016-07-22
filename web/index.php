@@ -18,7 +18,7 @@ echo 'Откл. автофиксацию изменений';
 echo $mysqli->query('INSERT INTO Users VALUES ("Margarita","1337")');
 echo 'Встаили значения';
 /* Фиксировать транзакцию */
-
+echo $mysql->query('SELECT * FROM Users WHERE 1');
 
 /* Удалить таблицу */
 
