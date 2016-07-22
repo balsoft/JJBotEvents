@@ -10,12 +10,12 @@ $mysqli = new mysqli(SQL_URL, LOGIN, PASS, DB_NAME);
 
 echo 'Соединение установлено... ' . "\n";
 echo 'Создаем таблицу';
-$mysqli->query("CREATE TABLE Users (name TEXT, chatID TEXT");
+$mysqli->query("CREATE TABLE Users (name TEXT, chatID TEXT)");
 echo 'Таблица создана';
 /* Откл. автофиксацию изменений */
 echo 'Откл. автофиксацию изменений';
 /* Вставить некоторые значения */
-$mysqli->query("INSERT INTO Users VALUES ('Margarita')");
+echo $mysqli->query('INSERT INTO Users VALUES ("Margarita","1337")');
 echo 'Встаили значения';
 /* Фиксировать транзакцию */
 
