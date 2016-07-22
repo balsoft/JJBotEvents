@@ -13,6 +13,22 @@ if (!$link) {
 }
 
 echo 'Соединение установлено... ' . mysqli_get_host_info($link) . "\n";
+$mysqli->query("CREATE TABLE Users (name VARCHAR(20), chatID VARCHAR(20))");
+
+/* Откл. автофиксацию изменений */
+$mysqli->autocommit(FALSE);
+
+/* Вставить некоторые значения */
+$mysqli->query("INSERT INTO Users VALUES ('Margarita','1337')");
+
+/* Фиксировать транзакцию */
+if (!$mysqli->commit()) {
+    print("Не удалось зафиксировать транзакцию\n");
+    exit();
+}
+ echo $mysqli->query("SELECT * FROM Users");
+/* Удалить таблицу */
+$mysqli->query("DROP TABLE Language");
 
 mysqli_close($link);
 ?>
