@@ -19,7 +19,12 @@ $mysqli->query("INSERT INTO Users VALUES ('Margarita','1337')");
 echo 'Встаили значения';
 /* Фиксировать транзакцию */
 
- echo $mysqli->query("SELECT * FROM Users")->num_rows;
+ if ($result = $mysqli->query("SELECT name FROM City Users")) {
+    printf("Select вернул %d строк.\n", $result->num_rows);
+
+    /* очищаем результирующий набор */
+    $result->close();
+}
 /* Удалить таблицу */
 $mysqli->query("DROP TABLE Users");
 
