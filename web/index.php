@@ -19,7 +19,7 @@ $mysqli->query("INSERT INTO Users VALUES ('Margarita','1337')");
 echo 'Встаили значения';
 /* Фиксировать транзакцию */
 
- if ($result = $mysqli->query("SELECT name FROM City Users")) {
+ if ($result = $mysqli->query("SELECT name FROM Users")) {
     echo 'select succeded';
 
     /* очищаем результирующий набор */
