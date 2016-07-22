@@ -13,6 +13,7 @@ if (!$link) {
 }
 
 echo 'Соединение установлено... ' . mysqli_get_host_info($link) . "\n";
+echo 'Создаем таблицу';
 $mysqli->query("CREATE TABLE Users (name VARCHAR(20), chatID VARCHAR(20))");
 echo 'Таблица создана';
 /* Откл. автофиксацию изменений */
