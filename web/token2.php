@@ -9,17 +9,17 @@
 
   $messageText = $update["message"]["text"];
 
-  if ($messageText == '/now') {
-      $reply = 'Идёт занятие по ботам.';
-  }
+  //if ($messageText == '/now') {
+  //    $reply = 'Идёт занятие по ботам.';
+ // }
 
-  if ($messageText == '/next') {
-      $reply = 'Спорт.';
-  }
+  //if ($messageText == '/next') {
+  //    $reply = 'Спорт.';
+  //}
 
-  $reply = $reply . $messa
+ // $reply = $reply . $messa
 
-  $reply = $reply . ' Хорошего дня, ' . $update['message']['from']['first_name'];
+  $reply = ' Хорошего дня, ' . $update['message']['from']['first_name'] . $messageText;
 
   $sendto = API_URL . "sendmessage?chat_id=" . $chatID . "&text=" . $reply;
   file_get_contents($sendto);
