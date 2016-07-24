@@ -15,12 +15,13 @@
   $username = $update["message"]["from"]["first_name"];
  $mysqli = new mysqli(SQL_URL, LOGIN, PASS, DB_NAME);
 $mysqli->query("CREATE TABLE Users (name TEXT, chatID TEXT)");
-$mysqli->query('INSERT INTO Users VALUES ('.$username.','.$chatID.')');
+$mysqli->query('INSERT INTO Users VALUES ('.$username.', '.$chatID.')');
 $result = $mysqli->query("SELECT * FROM Users WHERE 1 LIMIT 0,25");
-$mysqli->close();
+
   
     $reply = $reply . ' Хорошего дня, ' . $username;
 $reply=$reply.'. Ваш номер в таблице:'.$result->num_rows;
   $sendto = API_URL . "sendmessage?chat_id=" . $chatID . "&text=" . $reply;
   file_get_contents($sendto);
+  $mysqli->close();
 ?>
