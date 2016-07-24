@@ -15,7 +15,7 @@
   $username = $update["message"]["from"]["first_name"];
  $mysqli = new mysqli(SQL_URL, LOGIN, PASS, DB_NAME);
 $mysqli->query("CREATE TABLE Users (name TEXT, chatID TEXT)");
-$mysqli->query('INSERT INTO Users VALUES ("'.$username.'","'.$chatID.'") ON DUPLICATE KEY UPDATE (name=name)');
+$mysqli->query('INSERT INTO Users VALUES ("'.$username.'","'.$chatID.'")');
 $result = $mysqli->query("SELECT * FROM Users WHERE 1 LIMIT 0,25");
 
   
