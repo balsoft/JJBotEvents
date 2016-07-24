@@ -1,5 +1,5 @@
 <?php
-  define('BOT_TOKEN', '264455520:AAE0uvEd-Ic5Qo25vgpdGY9NydnTYqAvSnI');
+  define('BOT_TOKEN', '218027951:AAGFdVV7HssGRVn3WNA53BzPnozybS1NAaM');
   define('API_URL', 'https://api.telegram.org/bot'.BOT_TOKEN.'/');
 
   // read incoming info and grab the chatID
@@ -17,7 +17,7 @@
       $reply = 'Спорт.';
   }
 
-  $reply = $reply . $messageText;
+  $reply = $reply . $messa
 
   $reply = $reply . ' Хорошего дня, ' . $update['message']['from']['first_name'];
 
