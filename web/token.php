@@ -14,9 +14,16 @@
   
   $username = $update["message"]["from"]["first_name"];
  $mysqli = new mysqli(SQL_URL, LOGIN, PASS, DB_NAME);
+ if($messageText=='/register'){
 $mysqli->query("CREATE TABLE Users (name TEXT, chatID TEXT)");
 $mysqli->query('INSERT IGNORE INTO Users VALUES ("'.$username.'","'.$chatID.'")');
-$result = $mysqli->query("SELECT * FROM Users WHERE 1 LIMIT 0,25");
+}
+$users=$mysqli->query("SELECT * FROM Users WHERE 1 LIMIT 0,25");
+if(($username=='Александр ')&&(strpos($messageText, 'http') !== false))
+{
+  $mysqli->query('TRUNCATE files');
+  $mysqli->query('INSERT INTO files VALUES ("'.$messageText.'")');
+}
 
     $reply = $reply . ' Хорошего дня, ' . $username;
 $reply=$reply.'. Ваш номер в таблице:'.$result->num_rows;
