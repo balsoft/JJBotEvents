@@ -16,13 +16,13 @@ $file=fopen($fName,'r');
 $schedule=fgetcsv($file,1000,';');
    while (($schedule=fgetcsv($file,1000,';')) !== FALSE) {
             if(DateTime::createFromFormat('G:i',$schedule[0])->sub(new DateInterval('PT5M'))->getTimestamp()<microtime(true)){
-              {
+              
                   while (($row = $users->fetch_assoc())!==FALSE){
                         $reply = $reply . ' Хорошего дня, ' . $row["name"].". Через 5 минут будет ". $schedule[1]. ". Место встречи: ".$schedule[2];
                          $sendto = API_URL . "sendmessage?chat_id=" . $row["chatID"] . "&text=" . $reply;
                          file_get_contents($sendto);
                   } 
-              }
+              
             }
         }
    
