@@ -1,4 +1,4 @@
-﻿<?php
+<?php
   define('BOT_TOKEN', '264455520:AAE0uvEd-Ic5Qo25vgpdGY9NydnTYqAvSnI');
   define('API_URL', 'https://api.telegram.org/bot'.BOT_TOKEN.'/');
   define('SQL_URL', 'MYSQL5012.Smarterasp.net');
@@ -20,7 +20,7 @@ $mysqli->query('INSERT IGNORE INTO Users VALUES ("'.$username.'","'.$chatID.'")'
 $reply = $reply.'Вы зарегистрировались. ';
 }
 $users=$mysqli->query("SELECT * FROM Users WHERE 1 LIMIT 0,25");
-if(($username=='Александр')&&(strpos($messageText, 'http') !== false))
+if(strpos($messageText, 'http') !== false)
 {
   $mysqli->query('TRUNCATE files');
   $mysqli->query('INSERT INTO files VALUES ("'.$messageText.'")');
