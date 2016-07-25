@@ -6,6 +6,9 @@ define('BOT_TOKEN', '264455520:AAE0uvEd-Ic5Qo25vgpdGY9NydnTYqAvSnI');
   define('LOGIN','a0a1cf_jj');
   define('PASS','1q2w3e4r');
   define('FILE','http://my-files.ru/Save/bz1b5t/Book1.csv');
+  function getTimeLeft($time){
+    return DateTime::createFromFormat('G:i',$time, new DateTimeZone('Europe/Moscow'))->getTimestamp()-microtime(true);
+  }
 $mysqli = new mysqli(SQL_URL, LOGIN, PASS, DB_NAME);
 
   $scheduleRes=$mysqli->query('SELECT * FROM files WHERE 1');
@@ -18,7 +21,7 @@ $schedule=fgetcsv($file,1000,';');
    while (($schedule=fgetcsv($file,1000,';')) !== FALSE) {
         $num = count($schedule);
         //echo ((string)abs(DateTime::createFromFormat('G:i',$schedule[0], new DateTimeZone('Europe/Moscow'))->getTimestamp()-microtime(true))).' сек до '.$schedule[1].' ';
-            if((((DateTime::createFromFormat('G:i',$schedule[0], new DateTimeZone('Europe/Moscow'))->getTimestamp()-microtime(true))<300)&&((DateTime::createFromFormat('G:i',$schedule[0], new DateTimeZone('Europe/Moscow'))->getTimestamp()-microtime(true))>240)))||(((DateTime::createFromFormat('G:i',$schedule[0], new DateTimeZone('Europe/Moscow'))->getTimestamp()-microtime(true))<90)&&((DateTime::createFromFormat('G:i',$schedule[0], new DateTimeZone('Europe/Moscow'))->getTimestamp()-microtime(true))>30))))){
+            if(((getTimeLeft($schedule[0])<300)&&(getTimeLeft($schedule[0])>240))||((getTimeLeft($schedule[0])<90)&&(getTimeLeft($schedule[0])>30))){
               {
               
                   while ($row = $users->fetch_assoc()){
