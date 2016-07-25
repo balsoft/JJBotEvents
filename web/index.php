@@ -10,15 +10,15 @@ $mysqli = new mysqli(SQL_URL, LOGIN, PASS, DB_NAME);
 
   $scheduleRes=$mysqli->query('SELECT * FROM files WHERE 1');
   $fName=$scheduleRes->fetch_assoc()["filename"];
-  echo $fName;
+  //echo $fName;
 /* Удалить таблицу */
 $users=$mysqli->query("SELECT * FROM Users WHERE 1 LIMIT 0,25");
 $file=fopen($fName,'r');
 $schedule=fgetcsv($file,1000,';');
    while (($schedule=fgetcsv($file,1000,';')) !== FALSE) {
         $num = count($schedule);
-        echo ((string)abs(DateTime::createFromFormat('G:i',$schedule[0], new DateTimeZone('Europe/Moscow'))->getTimestamp()-microtime(true))).' сек до '.$schedule[1].' ';
-            if(abs(DateTime::createFromFormat('G:i',$schedule[0], new DateTimeZone('Europe/Moscow'))->getTimestamp()-microtime(true))<300){
+        //echo ((string)abs(DateTime::createFromFormat('G:i',$schedule[0], new DateTimeZone('Europe/Moscow'))->getTimestamp()-microtime(true))).' сек до '.$schedule[1].' ';
+            if((((DateTime::createFromFormat('G:i',$schedule[0], new DateTimeZone('Europe/Moscow'))->getTimestamp()-microtime(true))<300)&&((DateTime::createFromFormat('G:i',$schedule[0], new DateTimeZone('Europe/Moscow'))->getTimestamp()-microtime(true))>240)))||(((DateTime::createFromFormat('G:i',$schedule[0], new DateTimeZone('Europe/Moscow'))->getTimestamp()-microtime(true))<90)&&((DateTime::createFromFormat('G:i',$schedule[0], new DateTimeZone('Europe/Moscow'))->getTimestamp()-microtime(true))>30))))){
               {
               
                   while ($row = $users->fetch_assoc()){
