@@ -7,30 +7,27 @@ define('BOT_TOKEN', '264455520:AAE0uvEd-Ic5Qo25vgpdGY9NydnTYqAvSnI');
   define('PASS','1q2w3e4r');
   define('FILE','http://my-files.ru/Save/bz1b5t/Book1.csv');
 $mysqli = new mysqli(SQL_URL, LOGIN, PASS, DB_NAME);
+echo DateTime::createFromFormat('G:i',$schedule[0])->sub(new DateInterval('PT5M'))->getTimestamp();
 
-
-$mysqli->query("CREATE TABLE Users (name TEXT, chatID TEXT)");
-
-
-$result = $mysqli->query("SELECT * FROM Users WHERE 1 LIMIT 0,25");
- while ($row = $result->fetch_assoc()) {
-        printf ("%s (%s)\n", $row["name"], $row["chatID"]);
-    }
-  
+/*  $scheduleRes=$mysqli->query('SELECT * FROM files WHERE 1');
+  $fName=$scheduleRes->fetch_assoc()["filename"];*/
+  $fName=FILE;
 /* Удалить таблицу */
-
-$mysqli->close();
-$row = 1;
-if (($handle = fopen(FILE, "r")) !== FALSE) {
-    while (($data = fgetcsv($handle, 1000, ";")) !== FALSE) {
+$users=$mysqli->query("SELECT * FROM Users WHERE 1 LIMIT 0,25");
+$schedule=fgetcsv($file,1000,';';
+$file=fopen($fName,'r');
+   while (($schedule=fgetcsv($file,1000,';')) !== FALSE) {
         $num = count($data);
-        echo "<p> $num полей в строке $row: <br /></p>\n";
-        $row++;
-        for ($c=0; $c < $num; $c++) {
-            echo $data[$c] . "<br />\n";
+            if(DateTime::createFromFormat('G:i',$schedule[0])->sub(new DateInterval('PT5M'))->getTimestamp()<time()){
+              {
+                  while ($row = $users->fetch_assoc()){
+                        $reply = $reply . ' Хорошего дня, ' . $row["name"]."Через 5 минут будет ". $schedule[1]. ". Место встречи: ".$schedule[2];
+                         $sendto = API_URL . "sendmessage?chat_id=" . $row["chatID"] . "&text=" . $reply;
+                         file_get_contents($sendto);
+                  } 
+              }
+            }
         }
-    }
-    fclose($handle);
-}
-
+   
+    $mysqli->close();
 ?>
