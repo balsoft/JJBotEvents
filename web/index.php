@@ -7,8 +7,8 @@ define('BOT_TOKEN', '264455520:AAE0uvEd-Ic5Qo25vgpdGY9NydnTYqAvSnI');
   define('PASS','1q2w3e4r');
   define('FILE','http://my-files.ru/Save/bz1b5t/Book1.csv');
 $mysqli = new mysqli(SQL_URL, LOGIN, PASS, DB_NAME);
-echo DateTime::createFromFormat('G:i',$schedule[0])->sub(new DateInterval('PT5M'))->format('Y-m-d H-i-s');
-
+/*echo DateTime::createFromFormat('G:i',$schedule[0])->sub(new DateInterval('PT5M'))->format('Y-m-d H-i-s');*/
+echo date('Y-m-d');
 /*  $scheduleRes=$mysqli->query('SELECT * FROM files WHERE 1');
   $fName=$scheduleRes->fetch_assoc()["filename"];*/
   $fName=FILE;
