@@ -17,19 +17,17 @@ $file=fopen($fName,'r');
 $schedule=fgetcsv($file,1000,';');
    while (($schedule=fgetcsv($file,1000,';')) !== FALSE) {
         $num = count($schedule);
-            if(DateTime::createFromFormat('G:i',$schedule[0], new DateTimeZone('Europe/Moscow'))->sub(new DateInterval('PT5M'))->getTimestamp()<microtime(true)){
+        echo ((string)abs(DateTime::createFromFormat('G:i',$schedule[0], new DateTimeZone('Europe/Moscow'))->getTimestamp()-microtime(true))).' сек до '.$schedule[1].' ';
+            if(abs(DateTime::createFromFormat('G:i',$schedule[0], new DateTimeZone('Europe/Moscow'))->getTimestamp()-microtime(true))<300){
               {
-                if($mysqli->query('SELECT * FROM used WHERE name="'.$schedule[1].'"')->num_rows==0){
-                  $mysqli->query('INSERT INTO used VALUES("'.$schedule[1].'")');
+              
                   while ($row = $users->fetch_assoc()){
                         $reply = $reply . ' Хорошего дня, ' . $row["name"]."Через 5 минут будет ". $schedule[1]. ". Место встречи: ".$schedule[2];
                          $sendto = API_URL . "sendmessage?chat_id=" . $row["chatID"] . "&text=" . $reply;
                          file_get_contents($sendto);
-                  }
                   } 
               }
             }
         }
-   
-    $mysqli->close();
+$mysqli->close();
 ?>
