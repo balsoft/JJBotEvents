@@ -17,16 +17,17 @@
  if($messageText=='/register'){
 $mysqli->query("CREATE TABLE Users (name TEXT, chatID TEXT)");
 $mysqli->query('INSERT IGNORE INTO Users VALUES ("'.$username.'","'.$chatID.'")');
+$reply = $reply.'Вы зарегистрировались. ';
 }
 $users=$mysqli->query("SELECT * FROM Users WHERE 1 LIMIT 0,25");
-if(($username=='Александр ')&&(strpos($messageText, 'http') !== false))
+if(($username=='Александр')&&(strpos($messageText, 'http') !== false))
 {
   $mysqli->query('TRUNCATE files');
   $mysqli->query('INSERT INTO files VALUES ("'.$messageText.'")');
+  $reply=$reply.'Имя добавлено в таблицу. ';
 }
 
-    $reply = $reply . ' Хорошего дня, ' . $username;
-$reply=$reply.'. Ваш номер в таблице:'.$result->num_rows;
+    $reply = $reply . 'Хорошего дня, ' . $username;
   $sendto = API_URL . "sendmessage?chat_id=" . $chatID . "&text=" . $reply;
   file_get_contents($sendto);
   $mysqli->close();
