@@ -22,7 +22,7 @@ $result = $mysqli->query("SELECT * FROM Users WHERE 1 LIMIT 0,25");
 $mysqli->close();
 $row = 1;
 if (($handle = fopen(FILE, "r")) !== FALSE) {
-    while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
+    while (($data = fgetcsv($handle, 1000, ";")) !== FALSE) {
         $num = count($data);
         echo "<p> $num полей в строке $row: <br /></p>\n";
         $row++;
