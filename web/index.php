@@ -15,7 +15,7 @@ $users=$mysqli->query("SELECT * FROM Users WHERE 1 LIMIT 0,25");
 $file=fopen($fName,'r');
 $schedule=fgetcsv($file,1000,';');
    while (($schedule=fgetcsv($file,1000,';')) !== FALSE) {
-            if(((DateTime::createFromFormat('G:i',$schedule[0])->sub(new DateInterval('PT5M'))->getTimestamp())<microtime(true))&&((DateTime::createFromFormat('G:i',$schedule[0])->sub(new DateInterval('PT4M'))->getTimestamp())>microtime(true))){
+            if(DateTime::createFromFormat('G:i',$schedule[0])->sub(new DateInterval('PT5M')->getTimestamp()<microtime(true)){
               {
                   while ($row = $users->fetch_assoc()){
                         $reply = $reply . ' Хорошего дня, ' . $row["name"].". Через 5 минут будет ". $schedule[1]. ". Место встречи: ".$schedule[2];
