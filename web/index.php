@@ -13,8 +13,8 @@ $mysqli = new mysqli(SQL_URL, LOGIN, PASS, DB_NAME);
   $fName=FILE;
 /* Удалить таблицу */
 $users=$mysqli->query("SELECT * FROM Users WHERE 1 LIMIT 0,25");
-$schedule=fgetcsv($file,1000,';');
 $file=fopen($fName,'r');
+$schedule=fgetcsv($file,1000,';');
    while (($schedule=fgetcsv($file,1000,';')) !== FALSE) {
         $num = count($data);
         echo $schedule[0];
