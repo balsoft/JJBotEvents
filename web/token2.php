@@ -7,7 +7,7 @@
   $messageText = $update["message"]["text"];
   $username = $update["message"]["from"]["first_name"];
   //sql
-  define('SQL_URL', '	MYSQL5012.Smarterasp.net');
+  define('SQL_URL', 'MYSQL5012.Smarterasp.net');
   define('DB_NAME','db_a0a4c0_borbd');
   define('LOGIN','a0a4c0_borbd');
   define('PASS','0013boris');
