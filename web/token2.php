@@ -14,11 +14,12 @@
   
   //$res = $mysqli->query("SELECT * FROM 	sqlupload");
   if ($mysqli->connect_errno) {
-    echo ("Не удалось подключиться: %s\n", $mysqli->connect_error);
-}
-
+    echo ("Не удалось подключиться /n";
+  } 
+  $mysqli->query('INSERT INTO sqlupload VALUES ("'1'","'.$messageText.'","'2'","'3'")');
+  $reply = $mysqli->query("SELECT name FROM sqlupload LIMIT 1")
   //$reply = ' Хорошего дня, ' . $update['message']['from']['first_name'] . $messageText;
-  //$reply = $res;
+
 
   $sendto = API_URL . "sendmessage?chat_id=" . $chatID . "&text=" . $reply;
   file_get_contents($sendto);
