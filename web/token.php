@@ -20,7 +20,7 @@ $mysqli->query('INSERT IGNORE INTO Users VALUES ("'.$username.'","'.$chatID.'")'
 $reply = $reply.'Вы зарегистрировались. ';
 }
 if($messageText=="/unregister"){
-  $mysqli->query('DELETE FROM TABLE users WHERE chatID="'.$chatID.'"');
+  $mysqli->query("DELETE FROM TABLE users WHERE chatID='".$chatID."'");
   $reply='Регистрация отменена. ';
 }
 if($messageText=='/schedule'){
