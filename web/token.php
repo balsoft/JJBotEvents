@@ -24,11 +24,12 @@ if($messageText=="/unregister"){
 }
 if($messageText=='/schedule'){
    $scheduleRes=$mysqli->query('SELECT * FROM files WHERE 1');
-  $fName=$scheduleRes->fetch_assoc()["filename"];
-$file=fopen($fName,'r');
+   $fName=$scheduleRes->fetch_assoc()["filename"];
+   $file=fopen($fName,'r');
    while (($schedule=fgetcsv($file,1000,';')) !== FALSE) {
-          $reply = $reply.$schedule[0].' '.$schedule[1].' '.$schedule[2].'\n';
-        }
+       $reply = $reply.$schedule[0]." ".$schedule[1]." ".$schedule[2]."\n";
+    }
+    fclose($file);
 }
 $users=$mysqli->query("SELECT * FROM Users WHERE 1 LIMIT 0,25");
 if(strpos($messageText, 'http') !== false)
