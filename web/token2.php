@@ -13,6 +13,7 @@
   $mysqli = new mysqli(SQL_URL, LOGIN, PASS, DB_NAME);
   
   $res = $mysqli->query("SELECT * FROM 	sqlupload");
+  echo $res;
 
   //$reply = ' Хорошего дня, ' . $update['message']['from']['first_name'] . $messageText;
   $reply = $res;
