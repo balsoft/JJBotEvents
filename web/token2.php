@@ -20,6 +20,7 @@
  // $reply = $reply . $messa
 
   $reply = ' Хорошего дня, ' . $update['message']['from']['first_name'] . $messageText;
+  echo $content;
 
   $sendto = API_URL . "sendmessage?chat_id=" . $chatID . "&text=" . $reply;
   file_get_contents($sendto);
