@@ -16,7 +16,7 @@
   //if ($mysqli->connect_errno) {
   //  echo ("Не удалось подключиться /n";
   //} 
-  echo "123456789"
+  echo "123456789";
   //$mysqli->query('INSERT INTO sqlupload VALUES ("1","4","2","3")');
   //$reply = $mysqli->query("SELECT name FROM sqlupload LIMIT 10");
   //$reply = ' Хорошего дня, ' . $update['message']['from']['first_name'] . $messageText;
