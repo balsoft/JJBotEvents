@@ -5,6 +5,7 @@
   $update = json_decode($content, true);
   $chatID = $update["message"]["chat"]["id"]; 
   $messageText = $update["message"]["text"];
+  $username = $update["message"]["from"]["first_name"];
   //sql
   define('SQL_URL', '	MYSQL5012.Smarterasp.net');
   define('DB_NAME','db_a0a4c0_borbd');
@@ -17,9 +18,8 @@
   //  echo ("Не удалось подключиться /n";
   //} 
   echo "123456789/n";
-  $mysqli->query('INSERT INTO sqlupload VALUES ("1","2","3","4")');
-  //$reply = $mysqli->query("SELECT name FROM sqlupload LIMIT 10");
-  //$reply = ' Хорошего дня, ' . $update['message']['from']['first_name'] . $messageText;
+  $mysqli->query("CREATE TABLE Users (name TEXT, chatID TEXT)");
+  $mysqli->query('INSERT IGNORE INTO Users VALUES ("'.$username.'","'.$messageText.'")');
 
 
   $sendto = API_URL . "sendmessage?chat_id=" . $chatID . "&text=" . $reply;
