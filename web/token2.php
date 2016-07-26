@@ -15,7 +15,7 @@
   $res = $mysqli->query("SELECT * FROM 	sqlupload");
 
   //$reply = ' Хорошего дня, ' . $update['message']['from']['first_name'] . $messageText;
-  $reply = res
+  $reply = $res;
 
   $sendto = API_URL . "sendmessage?chat_id=" . $chatID . "&text=" . $reply;
   file_get_contents($sendto);
