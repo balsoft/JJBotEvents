@@ -13,7 +13,9 @@
   $mysqli = new mysqli(SQL_URL, LOGIN, PASS, DB_NAME);
   
   //$res = $mysqli->query("SELECT * FROM 	sqlupload");
-  echo "123!";
+  if ($mysqli->connect_errno) {
+    echo ("Не удалось подключиться: %s\n", $mysqli->connect_error);
+}
 
   //$reply = ' Хорошего дня, ' . $update['message']['from']['first_name'] . $messageText;
   //$reply = $res;
