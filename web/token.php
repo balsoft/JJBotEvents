@@ -27,7 +27,7 @@ if($messageText=='/schedule'){
   $fName=$scheduleRes->fetch_assoc()["filename"];
 $file=fopen($fName,'r');
    while (($schedule=fgetcsv($file,1000,';')) !== FALSE) {
-          $reply=$reply.$schedule[0].' '.$schedule[1].' '.$schedule[2].'\n';
+          $reply = $reply.$schedule[0].' '.$schedule[1].' '.$schedule[2].'\n';
         }
 }
 $users=$mysqli->query("SELECT * FROM Users WHERE 1 LIMIT 0,25");
