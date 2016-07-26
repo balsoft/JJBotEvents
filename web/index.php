@@ -18,7 +18,7 @@ $file=fopen($fName,'r');
 $schedule=fgetcsv($file,1000,';');
    while (($schedule=fgetcsv($file,1000,';')) !== FALSE) {
         $num = count($schedule);
-        echo ((string)abs(getTimeLeft($schedule[0]))).' сек до '.$schedule[1]."\n";
+        echo ((string)abs(getTimeLeft($schedule[0]))).' сек до '.$schedule[1]."</br>";
             if(abs(getTimeLeft($schedule[0]))<60.0){
               {
               echo 'notify';
