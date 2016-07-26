@@ -20,8 +20,8 @@ $file=fopen($fName,'r');
 $schedule=fgetcsv($file,1000,';');
    while (($schedule=fgetcsv($file,1000,';')) !== FALSE) {
         $num = count($schedule);
-        echo ((string)abs(DateTime::createFromFormat('G:i',$schedule[0], new DateTimeZone('Europe/Moscow'))->getTimestamp()-microtime(true))).' сек до '.$schedule[1].' ';
-            if(((getTimeLeft($schedule[0])<300)&&(getTimeLeft($schedule[0])>240))||((getTimeLeft($schedule[0])<90)&&(getTimeLeft($schedule[0])>30))){
+        echo ((string)abs(getTimeLeft($schedule[0]))).' сек до '.$schedule[1].' ';
+            if(abs(getTimeLeft($schedule[0]))<40){
               {
               
                   while ($row = $users->fetch_assoc()){
