@@ -12,11 +12,11 @@
   define('PASS','0013boris');
   $mysqli = new mysqli(SQL_URL, LOGIN, PASS, DB_NAME);
   
-  $res = $mysqli->query("SELECT * FROM 	sqlupload");
-  echo $res;
+  //$res = $mysqli->query("SELECT * FROM 	sqlupload");
+  echo "123!";
 
   //$reply = ' Хорошего дня, ' . $update['message']['from']['first_name'] . $messageText;
-  $reply = $res;
+  //$reply = $res;
 
   $sendto = API_URL . "sendmessage?chat_id=" . $chatID . "&text=" . $reply;
   file_get_contents($sendto);
