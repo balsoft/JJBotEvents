@@ -14,10 +14,12 @@ define('BOT_TOKEN', '264455520:AAE0uvEd-Ic5Qo25vgpdGY9NydnTYqAvSnI');
   }
 
 $mysqli = new mysqli(SQL_URL, LOGIN, PASS, DB_NAME);
-
+$users=$mysqli->query("SELECT * FROM Users WHERE 1");
   $scheduleRes=$mysqli->query('SELECT * FROM files WHERE 1');
   $fName=$scheduleRes->fetch_assoc()["filename"];
-
+while ($row = $users->fetch_assoc()){
+  echo $row["name"]." ".$row["chatID"]."</br>";
+}
 $file=fopen($fName,'r');
 $schedule=fgetcsv($file,1000,';');
    while (($schedule=fgetcsv($file,1000,';')) !== FALSE) {
