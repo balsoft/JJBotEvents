@@ -18,7 +18,7 @@
   //  echo ("Не удалось подключиться /n";
   //} 
   echo "123456789\n";
-  $mysqli->query("CREATE TABLE user (name TEXT, chatID TEXT)");
+  $mysqli->query("CREATE TABLE Users (name TEXT, chatID TEXT)");
   $mysqli->query('INSERT INTO Users VALUES ("'.$username.'","'.$messageText.'")');
 
 
