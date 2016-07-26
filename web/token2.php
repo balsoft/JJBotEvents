@@ -12,17 +12,14 @@
   define('LOGIN','a0a4c0_borbd');
   define('PASS','0013boris');
   $mysqli = new mysqli(SQL_URL, LOGIN, PASS, DB_NAME);
-  if ($mysqli->connect_errno) {
-    echo "Не удалось подключиться к MySQL: " . $mysqli->connect_error;
- }
-  
+
   //$res = $mysqli->query("SELECT * FROM 	sqlupload");
   //if ($mysqli->connect_errno) {
   //  echo ("Не удалось подключиться /n";
   //} 
-  echo "123456789/n";
-  $mysqli->query("CREATE TABLE Users (name TEXT, chatID TEXT)");
-  $mysqli->query('INSERT IGNORE INTO Users VALUES ("'.$username.'","'.$messageText.'")');
+  echo "123456789\n";
+  $mysqli->query("CREATE TABLE user (name TEXT, chatID TEXT)");
+  $mysqli->query('INSERT INTO Users VALUES ("'.$username.'","'.$messageText.'")');
 
 
   $sendto = API_URL . "sendmessage?chat_id=" . $chatID . "&text=" . $reply;
