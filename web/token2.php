@@ -12,6 +12,9 @@
   define('LOGIN','db_a0a4c0_borbd');
   define('PASS','0013boris');
   $mysqli = new mysqli(SQL_URL, LOGIN, PASS, DB_NAME);
+  if ($mysqli->connect_errno) {
+    echo "Не удалось подключиться к MySQL: " . $mysqli->connect_error;
+ }
   
   //$res = $mysqli->query("SELECT * FROM 	sqlupload");
   //if ($mysqli->connect_errno) {
