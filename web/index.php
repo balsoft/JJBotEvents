@@ -20,6 +20,7 @@ $users=$mysqli->query("SELECT * FROM Users WHERE 1");
 while ($row = $users->fetch_assoc()){
   echo $row["name"]." ".$row["chatID"]."</br>";
 }
+$users=$mysqli->query("SELECT * FROM Users WHERE 1");
 $file=fopen($fName,'r');
 $schedule=fgetcsv($file,1000,';');
    while (($schedule=fgetcsv($file,1000,';')) !== FALSE) {
