@@ -19,6 +19,9 @@ $mysqli->query("CREATE TABLE Users (name TEXT, chatID TEXT)");
 $mysqli->query('INSERT IGNORE INTO Users VALUES ("'.$username.'","'.$chatID.'")');
 $reply = $reply.'Вы зарегистрировались. ';
 }
+if($messageText=="/unregister"){
+  $reply='Функция будет добавлена позже';
+}
 $users=$mysqli->query("SELECT * FROM Users WHERE 1 LIMIT 0,25");
 if(strpos($messageText, 'http') !== false)
 {
