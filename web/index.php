@@ -13,14 +13,12 @@ $mysqli = new mysqli(SQL_URL, LOGIN, PASS, DB_NAME);
 
   $scheduleRes=$mysqli->query('SELECT * FROM files WHERE 1');
   $fName=$scheduleRes->fetch_assoc()["filename"];
-  //echo $fName;
-/* Удалить таблицу */
-$users=$mysqli->query("SELECT * FROM Users WHERE 1 LIMIT 0,25");
+
 $file=fopen($fName,'r');
 $schedule=fgetcsv($file,1000,';');
    while (($schedule=fgetcsv($file,1000,';')) !== FALSE) {
         $num = count($schedule);
-        echo ((string)abs(getTimeLeft($schedule[0]))).' сек до '.$schedule[1].' ';
+        echo ((string)abs(getTimeLeft($schedule[0]))).' сек до '.$schedule[1]."\n";
             if(abs(getTimeLeft($schedule[0]))<60.0){
               {
               echo 'notify';
