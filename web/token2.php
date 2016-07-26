@@ -9,7 +9,7 @@
   //sql
   define('SQL_URL', '	MYSQL5012.Smarterasp.net');
   define('DB_NAME','db_a0a4c0_borbd');
-  define('LOGIN','db_a0a4c0_borbd');
+  define('LOGIN','a0a4c0_borbd');
   define('PASS','0013boris');
   $mysqli = new mysqli(SQL_URL, LOGIN, PASS, DB_NAME);
   if ($mysqli->connect_errno) {
