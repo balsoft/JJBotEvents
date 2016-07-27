@@ -24,6 +24,7 @@ while ($row = $users->fetch_assoc()){
 }
 $users=$mysqli->query("SELECT * FROM Users WHERE 1");
 $schedule=str_getcsv($file,1000,';');
+$schedule=str_getcsv($file,1000,';');
    while (($schedule=str_getcsv($file,1000,';')) !== FALSE) {
         $num = count($schedule);
         echo ((string)abs(getTimeLeft($schedule[0])-300)).' сек до '.$schedule[1]."</br>";
