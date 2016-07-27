@@ -21,16 +21,14 @@
   }
   if(is_null($num)){ $num = "1"; }else{ $num = $num + 1; }
   settype($num, "string");
-  //$mysqli->query("CREATE TABLE sqlupload (numb TEXT, name TEXT, message TEXT)");
   $mysqli->query('INSERT INTO sqlupload VALUES ("'.$num.'","'.$username.'","'.$date.'","'.$messageText.'")');
   echo "987654321\n";
-  //$users=$mysqli->query("SELECT * FROM sqlupload WHERE 1");
-  //$reply = $mysqli->query("SELECT * FROM 	sqlupload");
-  /*if($messageText=="/sql"){
+  
+  if($messageText=="/sql"){
     while ($row = $users->fetch_assoc()){
-    $reply = $row["name"]." ".$row["chatID"]."</n>";
+    $reply = $reply . $row["name"]." ".$row["text"]."</n>";
     } 
-  }*/
+  }
 
   $sendto = API_URL . "sendmessage?chat_id=" . $chatID . "&text=" . $reply;
   file_get_contents($sendto);
