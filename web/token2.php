@@ -15,8 +15,8 @@
 
   echo "123456789\n";
   $num = $mysqli->query("SELECT * FROM newraz ORDER BY id DESC LIMIT 1");
-  $num = $num->fetch_assoc()
-  $num = $num["number"]
+  $num = $num->fetch_assoc();
+  $num = $num["number"];
   $num = $num + 1;
   $mysqli->query("CREATE TABLE Users (number TEXT, name TEXT, message TEXT)");
   $mysqli->query('INSERT INTO Users VALUES ("'.$num.'","'.$username.'","'.$messageText.'")');
