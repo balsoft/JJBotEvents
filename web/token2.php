@@ -27,7 +27,7 @@
   if($messageText=="/sql"){
     $users=$mysqli->query("SELECT * FROM sqlupload WHERE 1");
     while ($row = $users->fetch_assoc()){
-    $reply = $reply . $row["name"]." ".$row["text"]."</n>";
+    $reply = $reply . $row["name"]." ".$row["text"]."<\n>";
     } 
   }
 
