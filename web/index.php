@@ -37,7 +37,7 @@ $schedule=fgetcsv($file,1000,',');
                          file_get_contents($sendto);
                   } 
               }
-if(abs(getTimeLeft($schedule[0]))<40.0){
+/*if(abs(getTimeLeft($schedule[0]))<40.0){
               {
               echo 'notify';
                   while ($row = $users->fetch_assoc()){
@@ -45,7 +45,7 @@ if(abs(getTimeLeft($schedule[0]))<40.0){
                          $sendto = API_URL . "sendmessage?chat_id=" . $row["chatID"] . "&text=" . $reply;
                          file_get_contents($sendto);
                   } 
-              }
+              }*/
             }
         }
 $mysqli->close();
