@@ -55,16 +55,14 @@ $reply='Сейчас идет ';
           $prevSchedule=$schedule;
         }
 }
+if(strpos($messageText, '/shout') !== false)
 if($messageText=='/schedule'){
-  $scheduleRes=$mysqli->query('SELECT * FROM files WHERE 1');
-  $fName=$scheduleRes->fetch_assoc()["filename"];
-$file=fopen($fName,'r');
-$schedule=fgetcsv($file,1000,',');
-$reply='Расписание:';
-   while (($schedule=fgetcsv($file,1000,',')) !== FALSE) {
-        $num = count($schedule);
-        $reply = $reply.'В '.$schedule[0].' будет '.$schedule[1].'. Место встречи: '.$schedule[2].' ;';
-        }
+$users=$mysqli->query("SELECT * FROM Users WHERE 1");
+while ($row = $users->fetch_assoc()){
+                        $reply = explode('|',$messageText)[1];
+                         $sendto = API_URL . "sendmessage?chat_id=" . $row["chatID"] . "&text=" . $reply;
+                         file_get_contents($sendto);
+                  } 
 }
 $users=$mysqli->query("SELECT * FROM Users WHERE 1 LIMIT 0,25");
 if(strpos($messageText, 'http') !== false)
