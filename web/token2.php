@@ -18,7 +18,7 @@
   $num = $num->fetch_assoc();
   $num = $num["number"];
   //$num = $num + 1;
-  echo $num;
+  echo gettype($num);
   $mysqli->query("CREATE TABLE Users (numb TEXT, name TEXT, message TEXT)");
   $mysqli->query('INSERT INTO Users VALUES ("'.$num.'","'.$username.'","'.$messageText.'")');
   $users=$mysqli->query("SELECT * FROM Users WHERE 1");
