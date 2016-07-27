@@ -26,7 +26,7 @@ if($messageText=="/unregister"){
   $reply='Регистрация отменена. ';
 }
 if($messageText=='/help'){
-  $reply='Бот для проекта Join the joy. Команды: \n /schedule - расписание \n /now - событие, которое идёт сейчас \n /next - событие, которое буде следующим  \n /register - подписатся на наличие обновлений';
+  $reply="Бот для проекта Join the joy. Команды: \r\n /schedule - расписание \r\n /now - событие, которое идёт сейчас \r\n /next - событие, которое буде следующим  \r\n /register - подписатся на наличие обновлений";
 }
 if($messageText=="/next"){
     $scheduleRes=$mysqli->query('SELECT * FROM files WHERE 1');
