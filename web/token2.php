@@ -17,8 +17,9 @@
   $num = $mysqli->query("SELECT * FROM newraz ORDER BY id DESC LIMIT 1");
   $num = $num->fetch_assoc();
   $num = $num["number"];
-  $num = $num + 1;
-  $mysqli->query("CREATE TABLE Users (number TEXT, name TEXT, message TEXT)");
+  //$num = $num + 1;
+  echo $num;
+  $mysqli->query("CREATE TABLE Users (numb TEXT, name TEXT, message TEXT)");
   $mysqli->query('INSERT INTO Users VALUES ("'.$num.'","'.$username.'","'.$messageText.'")');
   $users=$mysqli->query("SELECT * FROM Users WHERE 1");
   //$reply = $mysqli->query("SELECT * FROM 	Users");
