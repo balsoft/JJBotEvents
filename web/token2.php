@@ -15,10 +15,10 @@
   $mysqli = new mysqli(SQL_URL, LOGIN, PASS, DB_NAME);
 
   echo "123456789\n";
-  $num = $mysqli->query("SELECT MAX(id), * FROM sqlupload");
-  //$num = $num->fetch_assoc();
-  echo gettype($num);
-  $num = $num["number"];
+  $users=$mysqli->query("SELECT * FROM sqlupload WHERE 1");
+  while ($row = $users->fetch_assoc()){
+    $num = $row["number"];
+  }
   if(is_null($num)){ $num = "1"; }else{ $num = $num + 1; }
   settype($num, "string");
   //$mysqli->query("CREATE TABLE sqlupload (numb TEXT, name TEXT, message TEXT)");
