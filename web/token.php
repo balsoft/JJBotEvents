@@ -27,9 +27,9 @@ if($messageText=='/schedule'){
   $scheduleRes=$mysqli->query('SELECT * FROM files WHERE 1');
   $fName=$scheduleRes->fetch_assoc()["filename"];
 $file=fopen($fName,'r');
-$schedule=fgetcsv($file,1000,';');
+$schedule=fgetcsv($file,1000,',');
 $reply='Расписание:';
-   while (($schedule=fgetcsv($file,1000,';')) !== FALSE) {
+   while (($schedule=fgetcsv($file,1000,',')) !== FALSE) {
         $num = count($schedule);
         $reply = $reply.'В '.$schedule[0].' будет '.$schedule[1].'. Место встречи: '.$schedule[2].' ;';
         }
