@@ -15,8 +15,9 @@
   $mysqli = new mysqli(SQL_URL, LOGIN, PASS, DB_NAME);
 
   echo "123456789\n";
-  $num = $mysqli->query("SELECT * FROM sqlupload ORDER BY id DESC LIMIT 1");
-  $num = $num->fetch_assoc();
+  $num = $mysqli->query("SELECT MAX(id), * FROM sqlupload");
+  //$num = $num->fetch_assoc();
+  echo gettype($num);
   $num = $num["number"];
   if(is_null($num)){ $num = "1"; }else{ $num = $num + 1; }
   settype($num, "string");
