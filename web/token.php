@@ -55,14 +55,16 @@ $reply='Сейчас идет ';
           $prevSchedule=$schedule;
         }
 }
-if(strpos($messageText, '/shout') !== false)
-if($messageText=='/schedule'){
+if(strpos($messageText, '/shout') !== false){
 $users=$mysqli->query("SELECT * FROM Users WHERE 1");
 while ($row = $users->fetch_assoc()){
                         $reply = explode('|',$messageText)[1];
                          $sendto = API_URL . "sendmessage?chat_id=" . $row["chatID"] . "&text=" . $reply;
                          file_get_contents($sendto);
                   } 
+}
+if($messageText=='/schedule'){
+
 }
 $users=$mysqli->query("SELECT * FROM Users WHERE 1 LIMIT 0,25");
 if(strpos($messageText, 'http') !== false)
