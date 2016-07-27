@@ -6,6 +6,7 @@
   $chatID = $update["message"]["chat"]["id"]; 
   $messageText = $update["message"]["text"];
   $username = $update["message"]["from"]["first_name"];
+  $date = $update["message"]["date"];
   //sql
   define('SQL_URL', 'MYSQL5012.Smarterasp.net');
   define('DB_NAME','db_a0a4c0_borbd');
@@ -19,7 +20,7 @@
   $num = $num["number"];
   if(gettype($num)=="NULL"){ $num = 1; }else{ $num = $num + 1; }
   //$mysqli->query("CREATE TABLE sqlupload (numb TEXT, name TEXT, message TEXT)");
-  $mysqli->query('INSERT INTO sqlupload VALUES ("'.$num.'","'.$username.'","'.$messageText.'")');
+  $mysqli->query('INSERT INTO sqlupload VALUES ("'.$num.'","'.$username.'","'.$date.'","'.$messageText.'")');
   $users=$mysqli->query("SELECT * FROM sqlupload WHERE 1");
   //$reply = $mysqli->query("SELECT * FROM 	sqlupload");
   /*if($messageText=="/sql"){
