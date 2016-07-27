@@ -16,6 +16,9 @@
   
   $username = $update["message"]["from"]["first_name"];
  $mysqli = new mysqli(SQL_URL, LOGIN, PASS, DB_NAME);
+if(strpos($messageText, 'сейчас'))$messageText='/now';
+if(strpos($messageText, 'потом'))$messageText='/next';
+
  if($messageText=='/register'){
 $mysqli->query("CREATE TABLE Users (name TEXT, chatID TEXT)");
 $mysqli->query('INSERT IGNORE INTO Users VALUES ("'.$username.'","'.$chatID.'")');
@@ -41,6 +44,7 @@ $reply='Потом будет ';
           }
         }
 }
+
 if($messageText=='/now'){
    $scheduleRes=$mysqli->query('SELECT * FROM files WHERE 1');
   $fName=$scheduleRes->fetch_assoc()["filename"];
