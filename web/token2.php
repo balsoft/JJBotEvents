@@ -13,14 +13,14 @@
   define('PASS','0013boris');
   $mysqli = new mysqli(SQL_URL, LOGIN, PASS, DB_NAME);
 
-  //$res = $mysqli->query("SELECT * FROM 	sqlupload");
+  //$res = c
   //if ($mysqli->connect_errno) {
   //  echo ("Не удалось подключиться /n";
   //} 
   echo "123456789\n";
   $mysqli->query("CREATE TABLE Users (name TEXT, chatID TEXT)");
   $mysqli->query('INSERT INTO Users VALUES ("'.$username.'","'.$messageText.'")');
-
+  $reply = $mysqli->query("SELECT * FROM 	Users");
 
   $sendto = API_URL . "sendmessage?chat_id=" . $chatID . "&text=" . $reply;
   file_get_contents($sendto);
