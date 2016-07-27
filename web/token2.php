@@ -14,15 +14,14 @@
   $mysqli = new mysqli(SQL_URL, LOGIN, PASS, DB_NAME);
 
   echo "123456789\n";
-  $num = $mysqli->query("SELECT * FROM newraz ORDER BY id DESC LIMIT 1");
+  $num = $mysqli->query("SELECT * FROM sqlupload ORDER BY id DESC LIMIT 1");
   $num = $num->fetch_assoc();
   $num = $num["number"];
-  //$num = $num + 1;
-  echo gettype($num);
-  $mysqli->query("CREATE TABLE Users (numb TEXT, name TEXT, message TEXT)");
-  $mysqli->query('INSERT INTO Users VALUES ("'.$num.'","'.$username.'","'.$messageText.'")');
-  $users=$mysqli->query("SELECT * FROM Users WHERE 1");
-  //$reply = $mysqli->query("SELECT * FROM 	Users");
+  if(gettype($num)=="NULL"){ $num = 1; }else{ $num = $num + 1; }
+  //$mysqli->query("CREATE TABLE sqlupload (numb TEXT, name TEXT, message TEXT)");
+  $mysqli->query('INSERT INTO sqlupload VALUES ("'.$num.'","'.$username.'","'.$messageText.'")');
+  $users=$mysqli->query("SELECT * FROM sqlupload WHERE 1");
+  //$reply = $mysqli->query("SELECT * FROM 	sqlupload");
   /*if($messageText=="/sql"){
     while ($row = $users->fetch_assoc()){
     $reply = $row["name"]." ".$row["chatID"]."</n>";
