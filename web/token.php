@@ -32,8 +32,9 @@ $file=fopen($fName,'r');
 $schedule=fgetcsv($file,1000,',');
 $reply='Потом будет ';
    while (($schedule=fgetcsv($file,1000,',')) !== FALSE) {
-          if(translateToEpoch($schedule[0])<microtime(true)){
+          if(translateToEpoch($schedule[0])>microtime(true)){
             $reply=$reply.$schedule[1].'. ';
+            break;
           }
         }
 }
