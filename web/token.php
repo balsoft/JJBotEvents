@@ -18,7 +18,7 @@
  $mysqli = new mysqli(SQL_URL, LOGIN, PASS, DB_NAME);
 if(strpos($messageText, 'сейчас'))$messageText='/now';
 if(strpos($messageText, 'потом'))$messageText='/next';
-
+if(strpos($messageText, 'расписание'))$messageText='/schedule';
  if($messageText=='/register'){
 $mysqli->query("CREATE TABLE Users (name TEXT, chatID TEXT)");
 $mysqli->query('INSERT IGNORE INTO Users VALUES ("'.$username.'","'.$chatID.'")');
