@@ -25,6 +25,9 @@ if($messageText=="/unregister"){
   $mysqli->query("DELETE FROM TABLE Users WHERE chatID = '".$chatID."'");
   $reply='Регистрация отменена. ';
 }
+if($messageText=='/help'){
+  $reply='Бот для проекта Join the joy. Команды: \n /schedule - расписание \n /now - событие, которое идёт сейчас \n /next - событие, которое буде следующим  \n /register - подписатся на наличие обновлений';
+}
 if($messageText=="/next"){
     $scheduleRes=$mysqli->query('SELECT * FROM files WHERE 1');
   $fName=$scheduleRes->fetch_assoc()["filename"];
