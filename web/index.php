@@ -41,7 +41,7 @@ if(abs(getTimeLeft($schedule[0]))<40.0){
               {
               echo 'notify';
                   while ($row = $users->fetch_assoc()){
-                        $reply = ' Хорошего дня, ' . $row["name"].". Через 1 минут будет ". $schedule[1]. ". Место встречи: ".$schedule[2];
+                        $reply = ' Хорошего дня, ' . $row["name"].". Через 1 минуту будет ". $schedule[1]. ". Место встречи: ".$schedule[2];
                          $sendto = API_URL . "sendmessage?chat_id=" . $row["chatID"] . "&text=" . $reply;
                          file_get_contents($sendto);
                   } 
