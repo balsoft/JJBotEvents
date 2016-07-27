@@ -49,7 +49,7 @@ $reply='Сейчас идет ';
             $reply=$reply.$prevSchedule[1].'. ';
             break;
           }
-          $prevSchedule=$schedule
+          $prevSchedule=$schedule;
         }
 }
 if($messageText=='/schedule'){
