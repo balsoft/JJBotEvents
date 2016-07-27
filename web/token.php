@@ -38,6 +38,20 @@ $reply='Потом будет ';
           }
         }
 }
+if($messageText=='/now'){
+   $scheduleRes=$mysqli->query('SELECT * FROM files WHERE 1');
+  $fName=$scheduleRes->fetch_assoc()["filename"];
+$file=fopen($fName,'r');
+$schedule=fgetcsv($file,1000,',');
+$reply='Сейчас идет ';
+   while (($schedule=fgetcsv($file,1000,',')) !== FALSE) {
+          if(translateToEpoch($schedule[0])>microtime(true)){
+            $reply=$reply.$prevSchedule[1].'. ';
+            break;
+          }
+          $prevSchedule=$schedule
+        }
+}
 if($messageText=='/schedule'){
   $scheduleRes=$mysqli->query('SELECT * FROM files WHERE 1');
   $fName=$scheduleRes->fetch_assoc()["filename"];
