@@ -28,7 +28,7 @@ $schedule=fgetcsv($file,1000,',');
    while (($schedule=fgetcsv($file,1000,',')) !== FALSE) {
         $num = count($schedule);
         echo ((string)abs(getTimeLeft($schedule[0])-300)).' сек до '.$schedule[1]."</br>";
-            if(abs(getTimeLeft($schedule[0])-300)<40.0){
+            if(abs(getTimeLeft($schedule[0])-300)<30.0){
               {
               echo 'notify';
                   while ($row = $users->fetch_assoc()){
@@ -37,7 +37,7 @@ $schedule=fgetcsv($file,1000,',');
                          file_get_contents($sendto);
                   } 
               }
-if(abs(getTimeLeft($schedule[0]))<40.0){
+if(abs(getTimeLeft($schedule[0]))<30.0){
               {$users=$mysqli->query("SELECT * FROM Users WHERE 1");
               echo 'notify';
                   while ($row = $users->fetch_assoc()){
