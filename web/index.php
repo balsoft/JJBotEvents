@@ -24,9 +24,9 @@ while ($row = $users->fetch_assoc()){
   echo $row["name"]." ".$row["chatID"]."</br>";
 }
 $users=$mysqli->query("SELECT * FROM Users WHERE 1");
-$schedule=fgetcsv($file,1000,';');
-$schedule=fgetcsv($file,1000,';');
-   while (($schedule=fgetcsv($file,1000,';')) !== FALSE) {
+$schedule=fgetcsv($file,1000,',');
+$schedule=fgetcsv($file,1000,';,');
+   while (($schedule=fgetcsv($file,1000,',')) !== FALSE) {
         $num = count($schedule);
         echo ((string)abs(getTimeLeft($schedule[0])-300)).' сек до '.$schedule[1]."</br>";
             if(abs(getTimeLeft($schedule[0])-300)<40.0){
