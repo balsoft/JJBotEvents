@@ -18,10 +18,12 @@
   $num = $mysqli->query("SELECT * FROM sqlupload ORDER BY id DESC LIMIT 1");
   $num = $num->fetch_assoc();
   $num = $num["number"];
-  if(gettype($num)=="NULL"){ $num = 1; }else{ $num = $num + 1; }
+  if(is_null($num)){ $num = "1"; }else{ $num = $num + 1; }
+  settype($num, "string");
   //$mysqli->query("CREATE TABLE sqlupload (numb TEXT, name TEXT, message TEXT)");
   $mysqli->query('INSERT INTO sqlupload VALUES ("'.$num.'","'.$username.'","'.$date.'","'.$messageText.'")');
-  $users=$mysqli->query("SELECT * FROM sqlupload WHERE 1");
+  echo "987654321\n";
+  //$users=$mysqli->query("SELECT * FROM sqlupload WHERE 1");
   //$reply = $mysqli->query("SELECT * FROM 	sqlupload");
   /*if($messageText=="/sql"){
     while ($row = $users->fetch_assoc()){
