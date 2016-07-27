@@ -19,6 +19,7 @@ $users=$mysqli->query("SELECT * FROM Users WHERE 1");
   $scheduleRes=$mysqli->query('SELECT * FROM files WHERE 1');
   $fName=$scheduleRes->fetch_assoc()["filename"];
   $file=file_get_contents($fName);
+  echo $fName;
 echo $file."</br>";
 while ($row = $users->fetch_assoc()){
   echo $row["name"]." ".$row["chatID"]."</br>";
