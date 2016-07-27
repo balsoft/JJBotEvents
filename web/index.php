@@ -18,16 +18,15 @@ $mysqli = new mysqli(SQL_URL, LOGIN, PASS, DB_NAME);
 $users=$mysqli->query("SELECT * FROM Users WHERE 1");
   $scheduleRes=$mysqli->query('SELECT * FROM files WHERE 1');
   $fName=$scheduleRes->fetch_assoc()["filename"];
-  $file=file_get_contents($fName);
   echo $fName;
-echo $file."</br>";
+  $file=fopen($fName,'r');
 while ($row = $users->fetch_assoc()){
   echo $row["name"]." ".$row["chatID"]."</br>";
 }
 $users=$mysqli->query("SELECT * FROM Users WHERE 1");
-$schedule=str_getcsv($file,1000,';');
-$schedule=str_getcsv($file,1000,';');
-   while (($schedule=str_getcsv($file,1000,';')) !== FALSE) {
+$schedule=fgetcsv($file,1000,';');
+$schedule=fgetcsv($file,1000,';');
+   while (($schedule=fgetcsv($file,1000,';')) !== FALSE) {
         $num = count($schedule);
         echo ((string)abs(getTimeLeft($schedule[0])-300)).' сек до '.$schedule[1]."</br>";
             if(abs(getTimeLeft($schedule[0])-300)<40.0){
