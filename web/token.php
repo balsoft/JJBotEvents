@@ -9,7 +9,9 @@
   $content = file_get_contents("php://input");
   $update = json_decode($content, true);
   $chatID = $update["message"]["chat"]["id"];
-
+  function translateToEpoch($time){
+    return DateTime::createFromFormat('G:i',$time, new DateTimeZone('Europe/Moscow'))->getTimestamp();
+  }
   $messageText = $update["message"]["text"];
   
   $username = $update["message"]["from"]["first_name"];
@@ -22,6 +24,18 @@ $reply = $reply.'Вы зарегистрировались. ';
 if($messageText=="/unregister"){
   $mysqli->query("DELETE FROM TABLE Users WHERE chatID = '".$chatID."'");
   $reply='Регистрация отменена. ';
+}
+if($messageText=="/next"){
+    $scheduleRes=$mysqli->query('SELECT * FROM files WHERE 1');
+  $fName=$scheduleRes->fetch_assoc()["filename"];
+$file=fopen($fName,'r');
+$schedule=fgetcsv($file,1000,',');
+$reply='Потом будет ';
+   while (($schedule=fgetcsv($file,1000,',')) !== FALSE) {
+          if(translateToEpoch($schedule[0])<microtime(true)){
+            $reply=$reply.$schedule[1].'. ';
+          }
+        }
 }
 if($messageText=='/schedule'){
   $scheduleRes=$mysqli->query('SELECT * FROM files WHERE 1');
