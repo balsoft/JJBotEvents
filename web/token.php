@@ -36,9 +36,10 @@ if($messageText=="/next"){
   $fName=$scheduleRes->fetch_assoc()["filename"];
 $file=fopen($fName,'r');
 $schedule=fgetcsv($file,1000,',');
-$reply='Потом будет ';
+$reply='Через ';
    while (($schedule=fgetcsv($file,1000,',')) !== FALSE) {
           if(translateToEpoch($schedule[0])>microtime(true)){
+$reply=$reply.((translateToEpoch($schedule[0])-microtime(true))%60).' минут будет';
             $reply=$reply.$schedule[1].'. ';
             break;
           }
