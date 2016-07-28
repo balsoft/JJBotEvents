@@ -39,7 +39,7 @@ $schedule=fgetcsv($file,1000,',');
 $reply='Через ';
    while (($schedule=fgetcsv($file,1000,',')) !== FALSE) {
           if(translateToEpoch($schedule[0])>microtime(true)){
-$reply=$reply.((translateToEpoch($schedule[0])-microtime(true))%60).' минут будет ';
+$reply=$reply.round((translateToEpoch($schedule[0])-microtime(true))/60).' минут будет ';
             $reply=$reply.$schedule[1].'. ';
             break;
           }
