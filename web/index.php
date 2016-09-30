@@ -7,6 +7,7 @@
   define('PASS','1q2w3e4r');
   define('FILE','http://my-files.ru/Save/bz1b5t/Book1.csv');*/
   require('secret.php');
+  echo PASS;
   ini_set('auto_detect_line_endings',TRUE);
   function translateToEpoch($time){
     return DateTime::createFromFormat('G:i',$time, new DateTimeZone('Europe/Moscow'))->getTimestamp();
