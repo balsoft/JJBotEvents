@@ -42,7 +42,7 @@ $users=$mysqli->query("SELECT * FROM Users WHERE 1");
 $schedule=fgetcsv($file,1000,',');
    while (($schedule=fgetcsv($file,1000,',')) !== FALSE) {
         $num = count($schedule);
-        echo '<tr><td>'.((string)abs(getTimeLeft($schedule[0])-300)).'</td><td>'.$schedule[1]."</td></tr>";
+        echo '<tr><td>'.$schedule[1].'</td><td>'.$schedule[2]."</td><td>".$schedule[3].'</td></tr>';
             if(abs(getTimeLeft($schedule[0])-300)<30.0){
               {
               echo 'notify';
