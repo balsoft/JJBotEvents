@@ -31,12 +31,18 @@ while ($row = $users->fetch_assoc()){
 }
 ?>
 </table>
+<table border="1">
+<tr>
+<th>Событие</th>
+<th>Место</th>
+<th>Ответственный</th>
+</tr>
 <?php
 $users=$mysqli->query("SELECT * FROM Users WHERE 1");
 $schedule=fgetcsv($file,1000,',');
    while (($schedule=fgetcsv($file,1000,',')) !== FALSE) {
         $num = count($schedule);
-        echo ((string)abs(getTimeLeft($schedule[0])-300)).' сек до '.$schedule[1]."</br>";
+        echo '<tr><td>'.((string)abs(getTimeLeft($schedule[0])-300)).'</td><td>'.$schedule[1]."</td></tr>";
             if(abs(getTimeLeft($schedule[0])-300)<30.0){
               {
               echo 'notify';
@@ -59,3 +65,4 @@ if(abs(getTimeLeft($schedule[0]))<30.0){
         }
 $mysqli->close();
 ?>
+</table>
