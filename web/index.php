@@ -32,7 +32,7 @@ $schedule=fgetcsv($file,1000,',');
               {
               echo 'notify';
                   while ($row = $users->fetch_assoc()){
-                        $reply = ' Хорошего дня, ' . $row["name"].". Через 5 минут будет ". $schedule[1]. ". Место встречи: ".$schedule[2];
+                        $reply = $row["name"].". Через 5 минут будет ". $schedule[1]. ". Место встречи: ".$schedule[2];
                          $sendto = API_URL . "sendmessage?chat_id=" . $row["chatID"] . "&text=" . $reply;
                          file_get_contents($sendto);
                   } 
@@ -41,7 +41,7 @@ if(abs(getTimeLeft($schedule[0]))<30.0){
               {$users=$mysqli->query("SELECT * FROM Users WHERE 1");
               echo 'notify';
                   while ($row = $users->fetch_assoc()){
-                        $reply = ' Хорошего дня, ' . $row["name"].". Через 1 минуту будет ". $schedule[1]. ". Место встречи: ".$schedule[2];
+                        $reply = $row["name"].". Через 1 минуту будет ". $schedule[1]. ". Место встречи: ".$schedule[2];
                          $sendto = API_URL . "sendmessage?chat_id=" . $row["chatID"] . "&text=" . $reply;
                          file_get_contents($sendto);
                   } 
