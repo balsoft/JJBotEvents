@@ -20,7 +20,7 @@ $users=$mysqli->query("SELECT * FROM Users WHERE 1");
   echo $fName;
   $file=fopen($fName,'r');
   echo '<br>';?>
-  <table>
+  <table border="1">
   <tr>
 	<th>Имя</th>
 	<th>ID чата</th>  
