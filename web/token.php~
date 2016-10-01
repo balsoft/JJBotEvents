@@ -64,6 +64,7 @@ if(strpos($messageText, '/shout') !== false){
 $users=$mysqli->query("SELECT * FROM Users WHERE 1");
 while ($row = $users->fetch_assoc()){
                         $reply = explode('|',$messageText)[1];
+                        $reply = $username . 'Сказал'.$reply;
                          $sendto = API_URL . "sendmessage?chat_id=" . $row["chatID"] . "&text=" . $reply;
                          file_get_contents($sendto);
                   } 
@@ -85,7 +86,7 @@ if(strpos($messageText, 'http') !== false)
   $reply=$reply.'Имя добавлено в таблицу. ';
 }
 
-    $reply = $reply . 'Хорошего дня, ' . $username;
+    $reply = $reply . 'Удачи, ' . $username;
   $sendto = API_URL . "sendmessage?chat_id=" . $chatID . "&text=" . $reply;
   file_get_contents($sendto);
   $mysqli->close();

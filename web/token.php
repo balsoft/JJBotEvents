@@ -15,7 +15,8 @@
   $messageText = $update["message"]["text"];
   
   $username = $update["message"]["from"]["first_name"];
- $mysqli = new mysqli(SQL_URL, LOGIN, PASS, DB_NAME);
+  $user = $update["message"]["chat"]["username"];
+   $mysqli = new mysqli(SQL_URL, LOGIN, PASS, DB_NAME);
 if(strpos($messageText, 'сейчас'))$messageText='/now';
 if(strpos($messageText, 'потом'))$messageText='/next';
 if(strpos($messageText, 'расписание'))$messageText='/schedule';
@@ -64,6 +65,7 @@ if(strpos($messageText, '/shout') !== false){
 $users=$mysqli->query("SELECT * FROM Users WHERE 1");
 while ($row = $users->fetch_assoc()){
                         $reply = explode('|',$messageText)[1];
+                        $reply = $username . 'Сказал'.$reply;
                          $sendto = API_URL . "sendmessage?chat_id=" . $row["chatID"] . "&text=" . $reply;
                          file_get_contents($sendto);
                   } 
@@ -78,11 +80,18 @@ if($messageText=='/schedule'){
    }
 }
 $users=$mysqli->query("SELECT * FROM Users WHERE 1 LIMIT 0,25");
+
 if(strpos($messageText, 'http') !== false)
 {
+	$admins = $mysqli->query('SELECT * FROM `admins`');
+	
+	while($adminname=  $admins->fetch_assoc()["name"]) {
+		if($adminname == $user) {
   $mysqli->query('TRUNCATE files');
   $mysqli->query('INSERT INTO files VALUES ("'.$messageText.'")');
   $reply=$reply.'Имя добавлено в таблицу. ';
+	break;  
+  }}
 }
 
     $reply = $reply . 'Удачи, ' . $username;
