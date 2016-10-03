@@ -30,6 +30,7 @@ while ($row = $users->fetch_assoc()){
   echo '<tr><td>'.$row["name"]."</td><td>".$row["chatID"]."</tr>";
 }
 ?>
+
 </table>
 <table border="1">
 <tr>
@@ -42,8 +43,8 @@ $users=$mysqli->query("SELECT * FROM Users WHERE 1");
 $schedule=fgetcsv($file,1000,',');
    while (($schedule=fgetcsv($file,1000,',')) !== FALSE) {
         $num = count($schedule);
-        echo '<tr><td>'.((string)abs(getTimeLeft($schedule[0])-300)).'</td><td>'.$schedule[1]."</td></tr>";
-            if(abs(getTimeLeft($schedule[0])-300)<30.0){
+        echo '<tr><td>'.$schedule[1].'</td><td>'.$schedule[2]."</td><td>".$schedule[3].'</td></tr>';
+            if(abs(getTimeLeft($schedule[0])-300)<30.0)
               {
               echo 'notify';
                   while ($row = $users->fetch_assoc()){
@@ -52,9 +53,10 @@ $schedule=fgetcsv($file,1000,',');
                          file_get_contents($sendto);
                   } 
               }
-if(abs(getTimeLeft($schedule[0]))<30.0){
-              {$users=$mysqli->query("SELECT * FROM Users WHERE 1");
-              echo 'notify';
+				else if(abs(getTimeLeft($schedule[0]))<30.0){
+              {
+              	$users=$mysqli->query("SELECT * FROM Users WHERE 1");
+               echo 'notify';
                   while ($row = $users->fetch_assoc()){
                         $reply = $row["name"].". Через 1 минуту будет ". $schedule[1]. ". Место встречи: ".$schedule[2];
                          $sendto = API_URL . "sendmessage?chat_id=" . $row["chatID"] . "&text=" . $reply;
